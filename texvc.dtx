@@ -22,8 +22,10 @@
 %<package>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<package>\ProvidesPackage{texvc}
 %<*package>
-[2015/11/09 v1.0 Initial Version]
+[2018/03/04 v1.1 Bugfixes]
 %</package>
+%<package>\RequirePackage{kvoptions}
+%<package>
 %<package>\RequirePackage{amsmath}
 %<package>\RequirePackage{amsfonts}
 %<package>\RequirePackage{amssymb}
@@ -31,16 +33,19 @@
 %<package>\PassOptionsToPackage{dvips,usenames}{color}
 %<package>\RequirePackage{color}
 %<package>
-%%<package>\PassOptionsToPackage{greek}{babel}
-%%<package>\RequirePackage{babel}
-%%<package>\RequirePackage{teubner}
+%<package>\PassOptionsToPackage{greek,english}{babel}
+%<package>\RequirePackage{babel}
+%<package>\RequirePackage{teubner}
 %<package>
 %<package>\RequirePackage{eurosym}
 %<package>
 %<package>\RequirePackage{cancel}
+%<package>
+%<package>\DeclareBoolOption{overwriteOr}
+%<package>\ProcessKeyvalOptions*
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{texvc}[2015/11/09]
+\usepackage{texvc}[2018/03/04]
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -80,7 +85,7 @@
 % \title{The \textsf{texvc} package\thanks{This document
 % corresponds to \textsf{texvc}~\fileversion,
 % dated \filedate.}}
-% \author{Moritz Schubotz \\ \texttt{schubotz@tu-berlin.de}}
+% \author{Moritz Schubotz \\ \texttt{moritz.schubotz@uni-konstanz.de}}
 % 
 % \maketitle
 %
@@ -411,7 +416,7 @@
 % \begin{macro}{\C}
 % This macro does the following replacement.
 %    \begin{macrocode}
-\newcommand{\C}{\mathbb{C}}
+%\newcommand{\C}{\mathbb{C}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -819,11 +824,28 @@
 %
 %
 %
-% \begin{macro}{\orMediaWiki}
+% \begin{macro}{\or}
 % This macro does the following replacement.
 %    \begin{macrocode}
-\newcommand{\orMediaWiki}{\lor}
+\let\@oldor\or
+\def\@fnsymbol#1{\ensuremath{\ifcase#1
+  \@oldor *
+  \@oldor \dagger
+  \@oldor \ddagger
+  \@oldor \mathsection
+  \@oldor \mathparagraph
+  \@oldor \|
+  \@oldor **
+  \@oldor \dagger\dagger
+  \@oldor \ddagger\ddagger
+  \else\@ctrerr\fi}}
+%TODO: move the following line inside the if statement
+\def\or{\ifmmode\lor\else\expandafter\@oldor\fi}
+\iftexvc@overwriteOr
+  \def\or{\ifmmode\lor\else\expandafter\@oldor\fi}
+\fi
 %    \end{macrocode}
+% This is a problematic macro, since it redefines the plain \TeX~macro \verb|\or|. Since the \verb|\thanks| command uses a custom function to determine the footnotesymol, which includes the use of \verb|\or| in math mode, we need to rewrite this symbol selection command. However, there might be more commands that use \verb|\or| used in mathmode. Thus we don't overwrite \verb|\or| by default. To enable the the or overwriting use the option \texttt{overwrite-or}.
 % \end{macro}
 %
 %
