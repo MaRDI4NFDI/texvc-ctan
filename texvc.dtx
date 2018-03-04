@@ -22,7 +22,7 @@
 %<package>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<package>\ProvidesPackage{texvc}
 %<*package>
-[2015/11/09 v1.0 Initial Version]
+[2018/03/04 v1.1 Bugfixes]
 %</package>
 %<package>\RequirePackage{amsmath}
 %<package>\RequirePackage{amsfonts}
@@ -31,16 +31,16 @@
 %<package>\PassOptionsToPackage{dvips,usenames}{color}
 %<package>\RequirePackage{color}
 %<package>
-%%<package>\PassOptionsToPackage{greek}{babel}
-%%<package>\RequirePackage{babel}
-%%<package>\RequirePackage{teubner}
+%<package>\PassOptionsToPackage{greek,english}{babel}
+%<package>\RequirePackage{babel}
+%<package>\RequirePackage{teubner}
 %<package>
 %<package>\RequirePackage{eurosym}
 %<package>
 %<package>\RequirePackage{cancel}
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{texvc}[2015/11/09]
+\usepackage{texvc}[2018/03/04]
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -80,7 +80,7 @@
 % \title{The \textsf{texvc} package\thanks{This document
 % corresponds to \textsf{texvc}~\fileversion,
 % dated \filedate.}}
-% \author{Moritz Schubotz \\ \texttt{schubotz@tu-berlin.de}}
+% \author{Moritz Schubotz \\ \texttt{moritz.schubotz@uni-konstanz.de}}
 % 
 % \maketitle
 %
@@ -411,7 +411,7 @@
 % \begin{macro}{\C}
 % This macro does the following replacement.
 %    \begin{macrocode}
-\newcommand{\C}{\mathbb{C}}
+%\newcommand{\C}{\mathbb{C}}
 %    \end{macrocode}
 % \end{macro}
 %
