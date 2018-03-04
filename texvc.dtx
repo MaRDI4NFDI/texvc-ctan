@@ -24,6 +24,7 @@
 %<*package>
 [2018/03/04 v1.1 Bugfixes]
 %</package>
+%<package>
 %<package>\RequirePackage{amsmath}
 %<package>\RequirePackage{amsfonts}
 %<package>\RequirePackage{amssymb}
@@ -38,6 +39,7 @@
 %<package>\RequirePackage{eurosym}
 %<package>
 %<package>\RequirePackage{cancel}
+%<package>
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{texvc}[2018/03/04]
@@ -85,12 +87,12 @@
 % \maketitle
 %
 % \begin{abstract}
-% This package provides all LaTeX command availible in MediaWiki.
+% This package provides all\footnote{The command \texttt{\textbackslash or} is only availible if custom code is copied into your \LaTeX-file. See page \pageref{cmd.or} for details.} LaTeX command availible in MediaWiki.
 % This includes several packages like amsmath, and adds some specific
 % commands such as \texttt{\textbackslash Reals}.
 % \end{abstract}
 %
-% \section{Introduction}
+% \section{Provided Macros}
 %
 % \subsection{Arrows}
 % The first group of MediaWiki coustom command (other\_delimiters2) defines short hand notations for some arrorws.
@@ -819,10 +821,11 @@
 %
 %
 %
-% \begin{macro}{\orMediaWiki}
-% This macro does the following replacement.
+% \begin{macro}{\or}\label{cmd.or}
+% This is a problematic macro, since it redefines the plain \TeX~macro \verb|\or|. For instance, the \verb|\thanks| command uses a custom function to determine the footnotesymol, which relies on the availibilty of the \verb|\or| command in math mode. Thus, the macro has to be defined after \verb|\maketitle| was executed. However, there might be more commands that use \verb|\or| used in mathmode. Thus we don't overwrite \verb|\or| in this pacakge. To enable the overwriting copy the code below to an appropriate position in your \LaTeX-file. However, it might be easier to manually replace \verb|\or| with \verb|\lor| which is all what the macro above does.
 %    \begin{macrocode}
-\newcommand{\orMediaWiki}{\lor}
+%\let\@oldor\or
+%\def\or{\ifmmode\lor\else\expandafter\@oldor\fi}
 %    \end{macrocode}
 % \end{macro}
 %
