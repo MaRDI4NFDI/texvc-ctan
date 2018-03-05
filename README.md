@@ -1,4 +1,6 @@
-# texvc (latex package)
+# texvc (latex package) [![DOI](https://zenodo.org/badge/45804199.svg)](https://zenodo.org/badge/latestdoi/45804199)
+
+
 
 This repository provides a latex package that allows to use texvc code in LaTeX.
 
