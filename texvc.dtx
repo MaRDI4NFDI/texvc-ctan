@@ -42,7 +42,7 @@
 %<package>
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{texvc}[2018/03/04]
+\usepackage{texvc}[2020/02/09]
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -75,19 +75,20 @@
 %
 % \changes{v1.0}{2015/11/09}{Initial version}
 % \changes{v1.1}{2018/03/04}{Fix bug with varcoppa, document usage of or}
+% \changes{v1.2}{2020/02/09}{Document deprecations}
 % \GetFileInfo{texvc.sty}
-%
+% \newcommand{\deprecated}{\emph{This command is deprecated.}}
 % \DoNotIndex{\newcommand,\newenvironment}
 %
 % \title{The \textsf{texvc} package\thanks{This document
 % corresponds to \textsf{texvc}~\fileversion,
 % dated \filedate.}}
-% \author{Moritz Schubotz \\ \texttt{moritz.schubotz@uni-konstanz.de}}
+% \author{Moritz Schubotz \\ \texttt{moritz.schubotz@fiz-karlsruhe.de}}
 % 
 % \maketitle
 %
 % \begin{abstract}
-% This package provides all\footnote{The command \texttt{\textbackslash or} is only availible if custom code is copied into your \LaTeX-file. See page \pageref{cmd.or} for details.} LaTeX command availible in MediaWiki.
+% This package provides all\footnote{The command \texttt{\textbackslash or} is only available if custom code is copied into your \LaTeX-file. See page \pageref{cmd.or} for details.} LaTeX command available in MediaWiki.
 % This includes several packages like amsmath, and adds some specific
 % commands such as \texttt{\textbackslash Reals}.
 % \end{abstract}
@@ -95,7 +96,7 @@
 % \section{Provided Macros}
 %
 % \subsection{Arrows}
-% The first group of MediaWiki coustom command (other\_delimiters2) defines short hand notations for some arrorws.
+% The first group of MediaWiki custom command (other\_delimiters2) defines short hand notations for some arrows.
 %
 % \DescribeMacro{\darr} Short hand notation for arrow $\downarrow.$ 
 %
@@ -122,12 +123,12 @@
 %
 % \subsection{Literals}
 % 
-% The second group of MediaWiki coustom commands (other\_litereals3) defines short hand notations for some literals.
+% The second group of MediaWiki custom commands (other\_litereals3) defines short hand notations for some literals.
 %
-% \DescribeMacro{\C} Short hand notation for literal $\mathbb{C}.$ 
+% \DescribeMacro{\C} Short hand notation for literal $\mathbb{C}.$ \deprecated
 %
 %
-% \DescribeMacro{\H} Short hand notation for literal $\mathbb{H}.$ 
+% \DescribeMacro{\H} Short hand notation for literal $\mathbb{H}.$ \deprecated
 %
 %
 % \DescribeMacro{\N} Short hand notation for literal $\mathbb{N}.$ 
@@ -151,10 +152,10 @@
 % \DescribeMacro{\Alpha} Short hand notation for literal $\mathrm{A}.$ 
 %
 %
-% \DescribeMacro{\and} Short hand notation for literal $\land.$ 
+% \DescribeMacro{\and} Short hand notation for literal $\land.$ \deprecated
 %
 %
-% \DescribeMacro{\ang} Short hand notation for literal $\angle.$ 
+% \DescribeMacro{\ang} Short hand notation for literal $\angle.$ \deprecated
 %
 %
 % \DescribeMacro{\Beta} Short hand notation for literal $\mathrm{B}.$ 
@@ -277,10 +278,10 @@
 % \DescribeMacro{\Omicron} Short hand notation for literal $\mathrm{O}.$ 
 %
 %
-% \DescribeMacro{\or} Short hand notation for literal $\lor.$ 
+% \DescribeMacro{\or} Short hand notation for literal $\lor.$ \deprecated
 %
 %
-% \DescribeMacro{\part} Short hand notation for literal $\partial.$ 
+% \DescribeMacro{\part} Short hand notation for literal $\partial.$ \deprecated
 %
 %
 % \DescribeMacro{\plusmn} Short hand notation for literal $\pm.$ 
@@ -342,7 +343,21 @@
 %
 % \DescribeMacro{\Zeta} Short hand notation for literal $\mathrm{Z}.$ 
 %
-%
+% \section{Deprecations}
+% According to the decision of \emph{Wikimedia Community User Group Math}\footnote{\url{https://meta.wikimedia.org/w/index.php?oldid=19705444}} the following macros have been deprecated\footnote{See \url{https://phabricator.wikimedia.org/T197842} for the discussion.}:
+% \begin{enumerate}
+% \item \verb|$|
+% \item \verb|%|
+% \item \verb|\and|
+% \item \verb|\or|
+% \item \verb|\part|
+% \item \verb|\ang|
+% \item \verb|\C|
+% \item \verb|\H|
+% \item \verb|\bold|
+% \item \verb|\Bbb|
+% \end{enumerate}
+% The commands 1,2,4,9,10 have never been part of this package, but were available from within Wikipedia.
 % \StopEventually{}
 %
 % \section{Implementation}
