@@ -4,6 +4,9 @@ all: $(PACKAGE).pdf
 $(PACKAGE).sty: $(PACKAGE).dtx $(PACKAGE).ins
 	pdflatex $(PACKAGE).ins
 
+$(PACKAGE).idx: $(PACKAGE).dtx $(PACKAGE).sty
+	pdflatex $(PACKAGE).dtx
+
 $(PACKAGE).ind: $(PACKAGE).idx $(PACKAGE).sty
 	makeindex -s gind.ist $(PACKAGE).idx
 
