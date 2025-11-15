@@ -18,3 +18,9 @@ For more information on `texvc` and its replacements, please refer to the follow
 <b>Making Math Searchable in Wikipedia.</b> CoRR abs/1304.5475 (2013)](https://dblp.org/rec/journals/corr/abs-1304-5475)
 
 
+## Upload to CTAN
+
+Follow https://ctan.org/help/upload-pkg.
+
+Keep in mind, creating a top-level folder called texvc.
+
