@@ -15,3 +15,6 @@ $(PACKAGE).gls: $(PACKAGE).idx $(PACKAGE).sty
 
 $(PACKAGE).pdf: $(PACKAGE).dtx $(PACKAGE).sty $(PACKAGE).ind $(PACKAGE).gls
 	pdflatex $(PACKAGE).dtx
+
+clean:
+	rm -rf *.aux *.toc *.log *.out *.bbl *.blg *.idx *.ilg *.ind *.glo *.gls

@@ -40,8 +40,17 @@
 %<package>
 %<package>\RequirePackage{cancel}
 %<package>
+%<package>\RequirePackage{bbold}
+%<package>
+%<package>\RequirePackage{mhchem}
+%<package>
+%<package>\RequirePackage{stix}
+%<package>
+%<package>\RequirePackage{arcs}
+%<package>
 %<*driver>
 \documentclass{ltxdoc}
+\maxdeadcycles=200
 \usepackage{texvc}[2020/02/09]
 \EnableCrossrefs
 \CodelineIndex
@@ -76,6 +85,7 @@
 % \changes{v1.0}{2015/11/09}{Initial version}
 % \changes{v1.1}{2018/03/04}{Fix bug with varcoppa, document usage of or}
 % \changes{v1.2}{2020/02/09}{Document deprecations}
+% \changes{v1.3}{2025/11/15}{Expand documentation and require all pagckages needed to render the commands correctly.}
 % \GetFileInfo{texvc.sty}
 % \newcommand{\deprecated}{\emph{This command is deprecated.}}
 % \DoNotIndex{\newcommand,\newenvironment}
@@ -89,7 +99,10 @@
 % \maketitle
 %
 % \begin{abstract}
-% This package provides all\footnote{The command \texttt{\textbackslash or} is only available if custom code is copied into your \LaTeX-file. See page \pageref{cmd.or} for details.} LaTeX command available in MediaWiki.
+% This package provides all\footnote{
+%   The command \texttt{\textbackslash or} is only available if custom code is copied into your \LaTeX-file.
+%   See page \pageref{cmd.or} for details.}
+% LaTeX command available in MediaWiki.
 % This includes several packages like amsmath, and adds some specific
 % commands such as \texttt{\textbackslash Reals}.
 % \end{abstract}
@@ -345,7 +358,10 @@
 % \DescribeMacro{\Zeta} Short hand notation for literal $\mathrm{Z}.$ 
 %
 % \section{Deprecations}
-% According to the decision of \emph{Wikimedia Community User Group Math}\footnote{\url{https://meta.wikimedia.org/w/index.php?oldid=19705444}} the following macros have been deprecated\footnote{See \url{https://phabricator.wikimedia.org/T197842} for the discussion.}:
+% According to the decision of \emph{Wikimedia Community User Group Math}\footnote{
+%   \url{https://meta.wikimedia.org/w/index.php?oldid=19705444}}
+% the following macros have been deprecated\footnote{
+%   See \url{https://phabricator.wikimedia.org/T197842} for the discussion.}:
 % \begin{enumerate}
 % \item \verb|$|
 % \item \verb|%|
